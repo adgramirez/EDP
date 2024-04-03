@@ -85,13 +85,27 @@ function AddLeave({ setLeaves, employee, onEmployeeChange, type, onTypeChange, s
             // Send request to add leave
             const addLeaveResponse = await axios.post('http://localhost:8081/addLeave', leaveRequestData); 
             if (addLeaveResponse.status === 201) { 
-                setLeaves(prevLeaves => [...prevLeaves, leaveRequestData]);
+                // Fetch and update leaves after adding a leave
+                fetchAndUpdateLeaves();
                 setRequestLeaveVisibility(false);
             } else {
                 console.error("Error adding leave:", addLeaveResponse.data);
             }
         } catch (error) {
             console.error("Error adding leave:", error);
+        }
+    };
+
+    const fetchAndUpdateLeaves = async () => {
+        try {
+            const updatedLeavesResponse = await axios.get('http://localhost:8081/leaves');
+            const updatedLeaves = updatedLeavesResponse.data;
+            console.log("Updated Leaves:", updatedLeaves);
+
+            // Update the leaves state with the updated list
+            setLeaves(updatedLeaves);
+        } catch (error) {
+            console.error("Error fetching updated leaves:", error);
         }
     };
 
@@ -145,7 +159,7 @@ function AddLeave({ setLeaves, employee, onEmployeeChange, type, onTypeChange, s
             </div>
 
             <div>
-            <p>(Status)</p>
+                <p>(Status)</p>
                 <select id="status" onChange={(e) => onStatusChange(e.target.value)}>
                     <option value="">Choose</option>
                     {leaveStatuses.map((leaveStatus) => (

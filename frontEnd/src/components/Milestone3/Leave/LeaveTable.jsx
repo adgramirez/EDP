@@ -11,7 +11,16 @@ function LeaveTable({ setRequestLeaveVisibility, setEditLeaveVisibility }) {
         const fetchLeaves = async () => {
             try {
                 const response = await axios.get('http://localhost:8081/leaves');
-                setLeaves(response.data);
+                // Sorting the leaves based on status
+                const sortedLeaves = response.data.sort((a, b) => {
+                    const statusOrder = {
+                        "Pending": 1,
+                        "Approved": 2,
+                        "Denied": 3
+                    };
+                    return statusOrder[a.leaveStatus] - statusOrder[b.leaveStatus];
+                });
+                setLeaves(sortedLeaves);
             } catch (error) {
                 console.error('Error fetching leaves:', error);
             }
@@ -19,7 +28,6 @@ function LeaveTable({ setRequestLeaveVisibility, setEditLeaveVisibility }) {
 
         fetchLeaves();
     }, []);
-
     const handleAdd = () => {
         setRequestLeaveVisibility(true);
     };
@@ -70,7 +78,7 @@ function LeaveTable({ setRequestLeaveVisibility, setEditLeaveVisibility }) {
             </div>
         </div>
     );
-}
+}   
 
 LeaveTable.propTypes = {
     setRequestLeaveVisibility: PropTypes.func.isRequired,
