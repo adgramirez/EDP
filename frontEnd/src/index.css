@@ -1,0 +1,115 @@
+body{
+  background-color: rgb(51, 51, 51);
+}
+
+th {
+  background-color: #eb6500;
+  padding: 10px;
+}
+
+table, th, td {
+  font-size: large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  border: 1px solid #eb6500;
+  border-collapse: collapse;
+}
+
+.default-button {
+  height: 30px;
+  padding: 0px 6px;
+}
+
+.blue-button {
+  margin: 5px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: #47afeb;
+  color: white;
+  border: 2px solid #47afeb;
+  transition-duration: 250ms;
+}
+
+.blue-button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  border: 2px solid #eb6500;
+}
+
+.table-button-container {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.default-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%; /* Make the container take up the full width of the page */
+}
+
+.button-container {
+  margin-top: 20px;
+  position: relative;
+  right: 0;
+}
+
+.add-employee-container {
+  background-color: rgb(51, 51, 51);
+  color: white;
+  padding: 10px;
+  margin-top: 50px;
+  border: 2px solid #eb6500;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+.add-employee-container h1{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.flex {
+  display: flex;
+  column-gap: 20px;
+}
+
+.left-align {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: left;
+}
+
+.edit-button{
+  padding: 10px;
+  margin: 5px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: #47afeb;
+  color: white;
+  border: 2px solid #47afeb;
+  transition-duration: 250ms;
+}
+
+.edit-button:hover{
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  border: 2px solid #eb6500;
+}
+
+
+.delete-button {
+  padding: 10px;
+  margin: 5px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: #e04747;
+  color: white;
+  transition-duration: 250ms;
+}
+
+.delete-button:hover{
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 2px solid #eb6500;
+}
