@@ -64,7 +64,7 @@ function EmployeeTable({ employees, setEmployees, addEmployeeVisibility, setAddE
                 </tbody>
             </table>
             <div className='add-button-container' onClick={handleAdd}>
-                {!addEmployeeVisibility && <DefaultButton label="Add New Employee"></DefaultButton>}
+                {!addEmployeeVisibility && <DefaultButton label="Add New Employee" classLabel="addNewEmployee"></DefaultButton>}
             </div>
         </div>
     );

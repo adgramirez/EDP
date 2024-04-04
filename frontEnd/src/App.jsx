@@ -187,6 +187,7 @@ function App() {
         <LeaveTable 
         leaves={leaves}
         setRequestLeaveVisibility={setAddLeaveVisibility}
+        setLeaves={setLeaves}
         />
       </div>
       <div className='default-container'>
