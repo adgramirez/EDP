@@ -72,10 +72,10 @@ function AddEmployee({ setAddEmployeeVisibility, setEmployees, setSuperiors }) {
                 <AddressInput onAddressChange={setAddress}></AddressInput>
                 <WorkInput onTypeChange={setSelectedEmployeeType} onDesignationChange={setSelectedDesignation} onDepartmentChange={setSelectedDepartment}></WorkInput>
                 <div onClick={handleAddEmployee}>
-                    <DefaultButton label="Add Employee"></DefaultButton>
+                    <DefaultButton className= "add-employee-container-button" label="Add Employee"></DefaultButton>
                 </div>
                 <div onClick={handleCancel}>
-                    <DefaultButton label="Cancel"></DefaultButton>
+                    <DefaultButton className= "add-employee-container-button" label="Cancel"></DefaultButton>
                 </div>
             </div>
         </div>

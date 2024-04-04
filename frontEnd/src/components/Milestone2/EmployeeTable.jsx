@@ -24,37 +24,39 @@ function EmployeeTable({ employees, setEmployees, addEmployeeVisibility, setAddE
     
     return (
         <div>
-            <table className="border-black border border-solid border-collapse">
-                <thead>
-                    <tr>
-                        <th className="border-black border border-solid border-collapse">Employee No.</th>
-                        <th className="border-black border border-solid border-collapse">Name</th>
-                        <th className="border-black border border-solid border-collapse">Contact</th>
-                        <th className="border-black border border-solid border-collapse">Address</th>
-                        <th className="border-black border border-solid border-collapse">Designation</th>
-                        <th className="border-black border border-solid border-collapse">Employee Type</th>
-                        <th className="border-black border border-solid border-collapse">Department</th>
-                        <th className="border-black border border-solid border-collapse">Actions</th>
+            <table className="tableHeader">
+        <thead>
+            <tr>
+                <th className="tableHeaderEmployeeNo">Employee No.</th>
+                <th className="tableHeaderName">Name</th>
+                <th className="tableHeaderContact">Contact</th>
+                <th className="tableHeaderAddress">Address</th>
+                <th className="tableHeaderDesignation">Designation</th>
+                <th className="tableHeaderEmployeeType">Employee Type</th>
+                <th className="tableHeaderDepartment">Department</th>
+                <th className="tableHeaderActions">Actions</th>
+            </tr>
+        </thead>
+    </table>
+    <table className="tableBody">
+        <tbody>
+            {employees.length > 0 ? (
+                employees.map((employee, index) => (
+                    <tr key={index}>
+                        <td className="employeeNumber">{employee.employeeNumber}</td>
+                        <td className="employeeName">{employee.firstName + " " + employee.middleName + " " + employee.lastName}</td>
+                        <td className="employeeContactInfo">{employee.contactInformation}</td>
+                        <td className="employeeAddress">{employee.HouseNumber + ', ' + employee.Street + ', ' + employee.Barangay + ', ' + employee.City + ', ' + employee.Province + ', ' + employee.Country + ', ' + employee.ZIPcode}</td>
+                        <td className="employeeDesignation">{employee.designationName}</td>
+                        <td className="employeeType ">{employee.employeeType}</td>
+                        <td className="employeeDepartment">{employee.departmentName}</td>
+                        <td>
+                            <div className='edit-delete-buttons'>
+                                <button className='edit-button' onClick={() => setEditEmployeeVisibility({ visibility: true, index: index })}>Edit Details</button>
+                                <button className='delete-button' onClick={() => handleDelete(employee.employee_ID)}>Remove Employee</button>
+                            </div>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    {employees.length > 0 ? (
-                        employees.map((employee, index) => (
-                            <tr key={index}>
-                                <td>{employee.employeeNumber}</td>
-                                <td>{employee.firstName + " " + employee.middleName + " " + employee.lastName}</td>
-                                <td>{employee.contactInformation}</td>
-                                <td>{employee.HouseNumber + ', ' + employee.Street + ', ' + employee.Barangay + ', ' + employee.City + ', ' + employee.Province + ', ' + employee.Country + ', ' + employee.ZIPcode}</td>
-                                <td>{employee.designationName}</td>
-                                <td>{employee.employeeType}</td>
-                                <td>{employee.departmentName}</td>
-                                <td>
-                                    <div className='edit-delete-buttons'>
-                                        <button className='edit-button' onClick={() => setEditEmployeeVisibility({ visibility: true, index: index })}>Edit Details</button>
-                                        <button className='delete-button' onClick={() => handleDelete(employee.employee_ID)}>Remove Employee</button>
-                                    </div>
-                                </td>
-                            </tr>
                         ))
                     ) : (
                         <tr>
@@ -64,7 +66,7 @@ function EmployeeTable({ employees, setEmployees, addEmployeeVisibility, setAddE
                 </tbody>
             </table>
             <div className='add-button-container' onClick={handleAdd}>
-                {!addEmployeeVisibility && <DefaultButton label="Add New Employee"></DefaultButton>}
+                {!addEmployeeVisibility && <DefaultButton label="Add New Employee" classLabel="addNewEmployee"></DefaultButton>}
             </div>
         </div>
     );

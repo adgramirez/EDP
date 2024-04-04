@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
 import DefaultButton from '../../UI/DefaultButton';
 import moment from 'moment';
 
-function LeaveTable({ setRequestLeaveVisibility, setEditLeaveVisibility }) {
-    const [leaves, setLeaves] = useState([]);
+function LeaveTable({ setRequestLeaveVisibility, leaves, setLeaves }) {
 
     useEffect(() => {
         const fetchLeaves = async () => {
@@ -82,7 +81,9 @@ function LeaveTable({ setRequestLeaveVisibility, setEditLeaveVisibility }) {
 
 LeaveTable.propTypes = {
     setRequestLeaveVisibility: PropTypes.func.isRequired,
-    setEditLeaveVisibility: PropTypes.func.isRequired
+    setEditLeaveVisibility: PropTypes.func.isRequired,
+    leaves: PropTypes.array.isRequired,
+    setLeaves: PropTypes.func.isRequired
 };
 
 export default LeaveTable;
